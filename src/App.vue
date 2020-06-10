@@ -73,6 +73,13 @@
       },
       search(){
         console.log("test search");
+        
+        
+
+
+
+
+
       }
     }
   }
@@ -105,5 +112,16 @@
 
 }
 
+
+@media(max-width: 1189px){
+
+.my-menu-li{
+
+     float: left !important;
+     //margin-right: 5% !important;
+
+}
+
+}
 
 </style>
