@@ -26,7 +26,7 @@
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page.sync="currentPage"
-        :page-size="100"
+        :page-size="pageSize"
         layout="prev, pager, next, jumper"
         :total="1000">
         </el-pagination>
@@ -68,7 +68,8 @@ export default {
             }
 
           ],
-          currentPage: 1
+          currentPage: 1,
+          pageSize:15
 
        }
     },
@@ -83,23 +84,20 @@ export default {
 
     },
     mounted(){
+     getBlogList({
+         currentPage:this.currentPage,pageSize:this.pageSize}).then(response=>{
 
-     getBlogList(this.currentPage).then(response=>{
-
-
-
-
+            
 
 
-     }).catch(error=>{
 
+
+        }).catch(error=>{
           this.$message({
           showClose: true,
           message: '错了哦，这是一条错误消息',
           type: 'error'
         });
-
-
      });
 
     }
