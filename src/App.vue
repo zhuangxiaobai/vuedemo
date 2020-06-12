@@ -7,6 +7,7 @@
       <el-menu-item index="1">首页</el-menu-item>
       <el-menu-item index="2">关于</el-menu-item>
       <el-menu-item index="3">友链</el-menu-item>
+      <el-menu-item index="4">写博客</el-menu-item>
       <li  class="el-menu-item my-menu-li" >
         <el-input  prefix-icon="el-icon-search"  v-model="input" placeholder="我是搜索框"></el-input>
         <i  class="el-icon-search" @click="search()"></i>
@@ -17,7 +18,7 @@
    
    </el-header>
    <el-main>
-     
+<!--      
        <template v-if="activeIndex === '1'">
       <router-link to="/"></router-link> 
       </template>
@@ -27,6 +28,9 @@
       <template v-else-if="activeIndex === '3'">
       <router-link to="/friend"></router-link>
       </template> 
+      <template v-else-if="activeIndex === '4'">
+      <router-link to="/editor"></router-link>
+      </template>  -->
 
      <router-view /> 
    </el-main >
@@ -67,6 +71,9 @@
           }else if(index === '3'){
 
               this.$router.push("/friend");
+          }else if(index === '4'){
+
+              this.$router.push("/editor");
           }
 
 
