@@ -28,9 +28,9 @@ module.exports = {
             port:8010,
             proxy:{   //配置代理服务器地址的是target的地址
                '/api':{
-                   target:'http://localhost:8081/zfc',
+                   target:'http://localhost:8085/blog',
                    changeOrigin:true,  //允许跨域，还不是特别明白
-                   pathRerite:{
+                   pathRewrite:{
                      '^/api':''   //请求中去掉/api
                } 
 

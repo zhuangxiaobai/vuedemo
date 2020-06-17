@@ -73,7 +73,7 @@
               this.$router.push("/friend");
           }else if(index === '4'){
 
-              this.$router.push("/editor");
+              this.$router.push("/blogEditor");
           }
 
 

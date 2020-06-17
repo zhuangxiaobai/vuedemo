@@ -9,3 +9,11 @@ export function getBlogList(params) {
       params
     })
   }
+
+  export function createOrUpdate(data) {
+    return request({
+      url: '/blog/createOrUpdate',
+      method: 'post',
+      data
+    })
+  }

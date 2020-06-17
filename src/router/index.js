@@ -1,8 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import BlogHome from "../views/BlogHome.vue"
 import Friend from "../views/Friend.vue"
-import Editor from "../views/Editor.vue"
+import BlogHome from "../views/blog/BlogHome.vue"
+import BlogEditor from "../views/blog/BlogEditor.vue"
+import BlogDetail from "../views/blog/BlogDetail.vue"
 
 Vue.use(VueRouter);
 
@@ -30,12 +31,20 @@ const routes = [
     component: Friend
   },
   {
-    path: "/editor",
-    name: "Editor",
+    path: "/blogEditor",
+    name: "BlogEditor",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: Editor
+    component: BlogEditor
+  },
+  {
+    path: "/blogDetail",
+    name: "BlogDetail",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: BlogDetail
   }
 
 ];
