@@ -19,10 +19,8 @@
 
 <script>
   import 'github-markdown-css'
-  // import Header from "../components/Header";
+  import { getBlogById } from '@/api/blog'
   export default {
-    // name: "BlogDetail.vue",
-    // components: {Header},
     data() {
       return {
         blog: {
@@ -34,19 +32,33 @@
       }
     },
     created() {
-      const blogId = this.$route.params.blogId
-      console.log(blogId)
-      const _this = this
-      // this.$axios.get('/blog/' + blogId).then(res => {
-      //   const blog = res.data.data
-      //   _this.blog.id = blog.id
-      //   _this.blog.title = blog.title
-      //   var MardownIt = require("markdown-it")
-      //   var md = new MardownIt()
-      //   var result = md.render(blog.content)
-      //   _this.blog.content = result
-      //   _this.ownBlog = (blog.userId === _this.$store.getters.getUser.id)
-      // })
+      let blogId = this.$route.params.blogId;
+      console.log(blogId);
+
+      getBlogById(blogId). 
+          then(response=>{
+            let blogRes = response.data.data;
+            this.blog.id = blogRes.id;
+            this.blog.title = blogRes.title;
+
+            let MardownIt = require("markdown-it");
+            let md = new MardownIt();
+            let result = md.render(blogRes.content);
+
+            this.blog.content = result;
+            
+            this.ownBlog = true;
+            }).catch(error=>{
+              this.$message({
+              showClose: true,
+              message: '错了哦，这是一条错误消息',
+              type: 'error'
+            });
+        });
+     
+
+
+
     }
   }
 </script>

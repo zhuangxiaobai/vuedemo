@@ -31,7 +31,7 @@
 </template>
 <script>
 
-import {createOrUpdate} from '@/api/blog'
+import {createOrUpdate,getBlogById} from '@/api/blog'
 export default {
     // name: "BlogEdit.vue",
     // components: {Header},
@@ -78,8 +78,12 @@ export default {
         createOrUpdate(this.ruleForm).then(response=>{
 
             
-
-
+          this.$message({
+              showClose: true,
+              message: '操作成功',
+              type: 'success'
+            });
+          this.$router.push("/");
 
 
           }).catch(error=>{
@@ -102,18 +106,27 @@ export default {
       }
     },
     created() {
-    //   const blogId = this.$route.params.blogId
-    //   console.log(blogId)
-    //   const _this = this
-    //   if(blogId) {
-    //     this.$axios.get('/blog/' + blogId).then(res => {
-    //       const blog = res.data.data
-    //       _this.ruleForm.id = blog.id
-    //       _this.ruleForm.title = blog.title
-    //       _this.ruleForm.description = blog.description
-    //       _this.ruleForm.content = blog.content
-    //     })
-    //   }
+      let blogId = this.$route.params.blogId
+      console.log(blogId)
+
+      if(blogId){
+        getBlogById(blogId). 
+            then(response=>{
+              let blogRes = response.data.data;
+              this.ruleForm.id = blogRes.id;
+              this.ruleForm.title = blogRes.title;
+              this.ruleForm.description = blogRes.description;
+              this.ruleForm.content = blogRes.content;
+            
+              }).catch(error=>{
+                this.$message({
+                showClose: true,
+                message: '错了哦，这是一条错误消息',
+                type: 'error'
+              });
+          });
+     }
     }
+
   }
   </script>

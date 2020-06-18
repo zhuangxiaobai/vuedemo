@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Friend from "../views/Friend.vue"
+import Login from "../views/Login.vue"
 import BlogHome from "../views/blog/BlogHome.vue"
 import BlogEditor from "../views/blog/BlogEditor.vue"
 import BlogDetail from "../views/blog/BlogDetail.vue"
@@ -29,6 +30,14 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: Friend
+  },
+  {
+    path: "/login",
+    name: "Login",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: Login
   },
   {
     path: "/blogEditor",

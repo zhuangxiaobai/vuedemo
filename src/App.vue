@@ -7,11 +7,17 @@
       <el-menu-item index="1">首页</el-menu-item>
       <el-menu-item index="2">关于</el-menu-item>
       <el-menu-item index="3">友链</el-menu-item>
-      <el-menu-item index="4">写博客</el-menu-item>
+      <span v-show="hasLogin"> <el-menu-item index="4">写博客</el-menu-item></span>
+      <li  class="el-menu-item my-menu-li-login">
+        <span v-show="!hasLogin"><router-link to="/login">登录</router-link> </span>
+        <span v-show="hasLogin"><el-link type="danger" @click="logout">退出</el-link></span>
+
+      </li>
       <li  class="el-menu-item my-menu-li" >
         <el-input  prefix-icon="el-icon-search"  v-model="input" placeholder="我是搜索框"></el-input>
         <i  class="el-icon-search" @click="search()"></i>
       </li>
+      
    
 
       </el-menu>
@@ -54,8 +60,8 @@
     data() {
       return {
         input:'',
-        activeIndex: '1'
-        
+        activeIndex: '1',
+        hasLogin:false
       };
     },
   methods: {
@@ -102,11 +108,17 @@
   text-align: center;
   color: #2c3e50;
 }
+.my-menu-li-login{
+     float: right !important;
+     margin-right: 3% !important;
+
+}
+
 //菜单栏的搜索框定义一些样式
 .my-menu-li{
 
      float: right !important;
-     margin-right: 5% !important;
+     margin-right: 4% !important;
 
 }
 //对菜单栏下的i标签定义一些样式
